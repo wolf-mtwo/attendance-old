@@ -1,0 +1,18 @@
+<section data-ng-controller="ReporteController" data-ng-init="findestudiantes()">
+	<h2>{{institucion.title}} <strong style="float:right">{{cantidad}}</strong></h2>
+    <ul class="list-group">
+    	<li class="list-group-item">
+            <span class="badge"><i class="glyphicon glyphicon-thumbs-down"></i></span>
+            <span class="badge"><i class="glyphicon glyphicon-thumbs-up"></i></span>
+            Status
+        </li>
+        <li class="list-group-item" data-ng-repeat="estudiante in estudiantes" data-ng-click="update(estudiante)">
+            <span class="badge">{{estudiante.permiso}}</span>
+            <span class="badge">{{estudiante.presente}}</span>
+            <a data-ng-href="#!/graficos/{{estudiante._id}}">{{estudiante.nombre}}</a>
+        </li>
+    </ul>
+    <a class="btn btn-info btn-lg" data-ng-href="#!/day/{{institucion._id}}">
+        Reporte por dia
+    </a>
+</section>

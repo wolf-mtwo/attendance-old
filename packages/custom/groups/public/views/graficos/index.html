@@ -1,0 +1,20 @@
+<section ng-controller="GraficosController" data-ng-init="findOne()">
+	<h1>Estudiante {{estudiante.nombre}}</h1>
+	<div style="text-align:center">
+	    <canvas tc-chartjs chart-type="doughnut" chart-data="data" chart-options="options" width="350" height="350"></canvas>
+	</div>
+	<div style="text-align:center">
+		<h1 style="display:inline">{{totalAsistencia}}</h1>
+	</div>
+	<div style="text-align:center">
+		<button type="button" class="btn btn-danger btn-lg">
+			Clases con falta {{data[2].value}}
+		</button>
+		<button type="button" class="btn btn-warning btn-lg">
+		  	Clases con licencia {{data[1].value}}
+		</button>
+		<button type="button" class="btn btn-success btn-lg">
+			Clases asistidad {{data[0].value}}
+		</button>
+	</div>
+</section>

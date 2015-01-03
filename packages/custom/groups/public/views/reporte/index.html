@@ -1,0 +1,10 @@
+<div data-ng-controller="ReporteController" data-ng-init="find()">
+	<div class="list-group">
+		<a href="#" class="list-group-item active">
+			reporte
+		</a>
+		<a href="" data-ng-href="#!/reporte/{{institucion._id}}/tabla" class="list-group-item" data-ng-repeat="institucion in instituciones">
+			{{institucion.title}}
+		</a>
+	</div>
+</section>

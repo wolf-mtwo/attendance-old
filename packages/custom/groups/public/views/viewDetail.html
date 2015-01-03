@@ -1,0 +1,64 @@
+<section data-ng-controller="InstitucionController" data-ng-init="findOneByestudents()">
+    <h2>{{institucion.title}}</h2>
+        <h1>Falta</h1>
+        <ul class="list-group">
+            <span data-ng-repeat="estudiante in estudiantes">
+                <span data-ng-if="estaOk2(estudiante)">
+                    <li class="list-group-item list-group-item-danger" data-ng-if="estudiante.status == 'fin'">
+                        <a href="" data-ng-href="#!/institucion/{{institucion._id}}/detail/{{estudiante._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                        <div style="float: right;margin-top:-7px;">
+                            <a class="btn btn-success" data-ng-click="presente(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                            </a>
+                            <a class="btn btn-warning" data-ng-click="permiso(estudiante);">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </a>   
+                            <a class="btn btn-danger" data-ng-click="fin(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-down"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-ng-if="estudiante.status != 'fin'">
+                        <a href="" data-ng-href="#!/institucion/{{institucion._id}}/detail/{{estudiante._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                        <div style="float: right;margin-top:-7px;">
+                            <a class="btn btn-success" data-ng-click="presente(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                            </a>
+                            <a class="btn btn-warning" data-ng-click="permiso(estudiante);">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </a>   
+                            <a class="btn btn-danger" data-ng-click="fin(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-down"></i>
+                            </a>
+                        </div>
+                    </li>
+                </span>  
+            </span>
+        </ul>
+        <button type="button" class="btn btn-primary btn-lg" data-ng-click="llamarlista();">
+            Guardar
+        </button>
+        <h1>Presente</h1>
+        <ul class="list-group">
+            <span data-ng-repeat="estudiante in actuales">
+                <span data-ng-if="estaOk2(estudiante)">
+                    <li ng-if="estudiante.status == 'presente'" class="list-group-item list-group-item-success" data-ng-click="falta(estudiante);">
+                        <a data-ng-href="#!/estudiante/{{estudiante._id}}/institucion/{{institucion._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                    </li>
+                    <li ng-if="estudiante.status == 'permiso'" class="list-group-item list-group-item-warning" data-ng-click="falta(estudiante);">
+                        <a data-ng-href="#!/estudiante/{{estudiante._id}}/institucion/{{institucion._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                    </li>
+                </span>  
+            </span>
+        </ul>
+        
+</section>
+
