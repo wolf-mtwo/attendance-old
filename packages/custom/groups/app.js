@@ -18,12 +18,12 @@ Groups.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Groups.menus.add({
-    title: 'groups example page',
+    title: 'Groups',
     link: 'groups example page',
     roles: ['authenticated'],
     menu: 'main'
   });
-  
+
   Groups.aggregateAsset('css', 'groups.css');
 
   /**
