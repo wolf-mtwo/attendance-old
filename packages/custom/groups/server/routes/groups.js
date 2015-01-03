@@ -1,7 +1,21 @@
 'use strict';
 
+var groups = require('../controllers/groups');
+
 // The Package is past automatically as first parameter
 module.exports = function(Groups, app, auth, database) {
+
+  app.route('/groups')
+    .get(groups.all)
+    .post(auth.requiresLogin, groups.create);
+
+  // app.route('/groups/:articleId')
+  //   .get(auth.isMongoId, groups.show)
+  //   .put(auth.isMongoId, auth.requiresLogin, groups.update)
+  //   .delete(auth.isMongoId, auth.requiresLogin, groups.destroy);
+
+    // Finish with setting up the articleId param
+  app.param('articleId', groups.institucion);
 
   app.get('/groups/example/anyone', function(req, res, next) {
     res.send('Anyone can access this');
