@@ -1,0 +1,9 @@
+<section data-ng-controller="InstitucionController" data-ng-init="find()">
+<ul class="instituciones unstyled">
+        <li data-ng-repeat="institucion in instituciones">
+            <h2>
+                <a data-ng-href="#!/institucion/{{institucion._id}}/detail">{{institucion.title}}</a>
+            </h2>
+        </li>
+    </ul>
+</section>

@@ -1,0 +1,55 @@
+<div data-ng-controller="DayController" data-ng-init="findreport()">
+	<h1>UN solo dia {{day.created | date:'medium'}}</h1>
+		<ul class="list-group">
+            <span data-ng-repeat="estudiante in estudiantes">
+                    <li class="list-group-item" data-ng-if="estudiante.status != 'presente' && estudiante.status != 'permiso'">
+                        <a href="" data-ng-href="#!/institucion/{{institucion._id}}/detail/{{estudiante._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                        <div style="float: right;margin-top:-7px;">
+                            <a class="btn btn-success" data-ng-click="change(estudiante, 'presente');">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                            </a>
+                            <a class="btn btn-warning" data-ng-click="change(estudiante, 'permiso');">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </a>   
+                            <a class="btn btn-danger" data-ng-click="change(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-down"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item list-group-item-warning" data-ng-if="estudiante.status == 'permiso'">
+                        <a href="" data-ng-href="#!/institucion/{{institucion._id}}/detail/{{estudiante._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                        <div style="float: right;margin-top:-7px;">
+                            <a class="btn btn-success" data-ng-click="change(estudiante, 'presente');">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                            </a>
+                            <a class="btn btn-warning" data-ng-click="change(estudiante, 'permiso');">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </a>   
+                            <a class="btn btn-danger" data-ng-click="change(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-down"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item list-group-item-success" data-ng-if="estudiante.status == 'presente'">
+                        <a href="" data-ng-href="#!/institucion/{{institucion._id}}/detail/{{estudiante._id}}">
+                            {{estudiante.nombre}}
+                        </a>
+                        <div style="float: right;margin-top:-7px;">
+                            <a class="btn btn-success" data-ng-click="create(estudiante, 'presente');">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                            </a>
+                            <a class="btn btn-warning" data-ng-click="change(estudiante, 'permiso');">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </a>   
+                            <a class="btn btn-danger" data-ng-click="change(estudiante);">
+                                <i class="glyphicon glyphicon-thumbs-down"></i>
+                            </a>
+                        </div>
+                    </li>
+            </span>
+        </ul>
+</section>

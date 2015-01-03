@@ -1,0 +1,12 @@
+<section data-ng-controller="InstitucionController" data-ng-init="find()">
+<ul class="instituciones unstyled">
+        <li data-ng-repeat="institucion in instituciones">
+            <h2>
+                <a data-ng-href="#!/institucion/{{institucion._id}}">{{institucion.title}}</a>
+                <a class="btn" data-ng-click="remove(institucion);">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </h2>
+        </li>
+    </ul>
+</section>

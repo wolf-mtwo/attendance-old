@@ -1,0 +1,8 @@
+<div data-ng-controller="DayController" data-ng-init="find()">
+	<h1>Todos los dias</h1>
+	<ul class="list-group">
+        <li class="list-group-item" data-ng-repeat="day in days">
+            <a data-ng-href="#!/day/{{institucion._id}}/report/{{day._id}}">{{day.created | date:'medium'}}</a>
+        </li>
+    </ul>
+</section>
