@@ -45,41 +45,38 @@ exports.create = function(req, res) {
  * Update an article
  */
 exports.update = function(req, res) {
-    var item = req.institucion;
+  var item = req.group;
 
-    item = _.extend(item, req.body);
+  item = _.extend(item, req.body);
 
-    item.save(function(err) {
-        if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                institucion: item
-            });
-        } else {
-            res.jsonp(item);
-        }
-    });
+  item.save(function(err) {
+    if (err) {
+      return res.send('users/signup', {
+        errors: err.errors,
+        object: item
+      });
+    } else {
+      res.jsonp(item);
+    }
+  });
 };
 
 /**
  * Delete an article
  */
 exports.destroy = function(req, res) {
-    // var item = req.params;
-    var item = req.institucion;
+  var item = req.group;
 
-    // res.jsonp({item :  item,  hi:'hola'});
-
-    item.remove(function(err) {
-        if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                institucion: item
-            });
-        } else {
-            res.jsonp(item);
-        }
-    });
+  item.remove(function(err) {
+    if (err) {
+      return res.send('users/signup', {
+        errors: err.errors,
+        object: item
+      });
+    } else {
+      res.jsonp(item);
+    }
+  });
 };
 
 /**

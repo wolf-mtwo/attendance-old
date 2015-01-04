@@ -19,6 +19,16 @@ angular.module('mean.groups').config(['$stateProvider',
       templateUrl: path + '/views/create.html'
     });
 
+    $stateProvider.state('groups-remove', {
+      url: '/groups/:groupId/remove',
+      templateUrl: path + '/views/remove.html'
+    });
+
+    $stateProvider.state('groups-edit', {
+      url: '/groups/:groupId/edit',
+      templateUrl: path + '/views/edit.html'
+    });
+
     $stateProvider.state('groups-detail', {
       url: '/groups/:groupId',
       templateUrl: path + '/views/view.html'

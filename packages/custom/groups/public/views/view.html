@@ -3,49 +3,23 @@
 
   <div class="list-group">
       <a data-ng-href="#!/groups/{{group._id}}"
-      class="list-group-item"
-      data-ng-repeat="participant in participants"
-      >
-      {{participant.nombre}}
+         class="list-group-item"
+         data-ng-repeat="participant in participants">
+        {{participant.name}}
     </a>
   </div>
 
-   <div class="list-group">
-     <a href="#!/groups/{{group._id}}/participants/create" class="list-group-item active">
-       Nuevo Participante
-     </a>s
-   </div>
-
-    <a class="btn" href="/#!/institucion/{{institucion._id}}/edit">
+  <div class="list-group">
+    <a href="#!/groups/{{group._id}}/participants/create" class="list-group-item active">
+      Nuevo Participante
+    </a>
+  </div>
+  <div class="text-right">
+    <a class="btn" href="/#!/groups/{{group._id}}/edit">
         <i class="glyphicon glyphicon-edit"></i>
     </a>
-    <a class="btn" data-ng-click="remove(institucion);">
-        <i class="glyphicon glyphicon-trash"></i>
+    <a class="btn" href="/#!/groups/{{group._id}}/remove">
+      <i class="glyphicon glyphicon-trash"></i>
     </a>
-    <div ng-controller="EstudiantesController" data-ng-init="">
-    <h1>Estudiantes</h1>
-    <div ></div>
-    <input type="hidden" name="institucion" value='institucion'>
-    <button type="button" class="btn btn-default btn-lg" data-ng-click="find();">
-        Star
-    </button>
-    <br>
-    <br>
-    <br>
-        <ul class="list-group">
-            <span data-ng-repeat="estudiante in estudiantes">
-                <span data-ng-if="estaOk(estudiante)">
-                    <li class="list-group-item">
-                        <a data-ng-href="#!/estudiante/{{estudiante._id}}/institucion/{{institucion._id}}">
-                            {{estudiante.nombre}}
-                        </a>
-                        <a class="btn" data-ng-click="remove(estudiante);">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </a>
-                    </li>
-                </span>
-            </span>
-        </ul>
-
-    </div>
+  </div>
 </div>

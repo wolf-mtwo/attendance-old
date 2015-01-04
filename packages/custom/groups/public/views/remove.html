@@ -1,0 +1,7 @@
+<div data-ng-controller="GroupsController" data-ng-init="findOne()">
+    <h1>{{group.title}}</h1>
+    <div class="text-rigth">
+      <a class="btn btn-success" data-ng-click="remove(group);">Remove</a>
+      <a href="#!/groups/{{group._id}}" class="btn btn-default">Cancelar</a>
+    </div>
+</div>

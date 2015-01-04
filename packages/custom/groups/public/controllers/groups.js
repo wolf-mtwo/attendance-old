@@ -14,6 +14,7 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
 
     $scope.global = Global;
     $scope.actuales = [];
+    $scope.group = {};
 
     $scope.find = function() {
       Groups.query(function(value) {
@@ -46,6 +47,23 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
       });
     };
 
+    $scope.remove = function(item) {
+      item.$remove(function(response) {
+        $location.path('groups');
+      });
+    };
+
+    $scope.update = function(item) {
+      if (!item.updated) {
+        item.updated = [];
+      }
+      item.updated.push(new Date().getTime());
+      item.$update(function() {
+        $location.path('groups/' + $stateParams.groupId);
+      });
+    };
+
+
 
 
 
@@ -67,32 +85,7 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
     //   });
     // };
     //
-    // $scope.remove = function(item) {
-    //   if (item) {
-    //     item.$remove();
-    //     for (var i in $scope.instituciones) {
-    //       if ($scope.instituciones[i] === item) {
-    //         $scope.instituciones.splice(i, 1);
-    //         console.log('general malito');
-    //       }
-    //     }
-    //   } else {
-    //     $scope.item.$remove(function(response) {
-    //       $location.path('institucion/list');
-    //     });
-    //   }
-    // };
     //
-    // $scope.update = function() {
-    //   var institucion = $scope.institucion;
-    //   if (!institucion.updated) {
-    //     institucion.updated = [];
-    //   }
-    //   institucion.updated.push(new Date().getTime());
-    //   institucion.$update(function() {
-    //     $location.path('institucion/' + institucion._id);
-    //   });
-    // };
     //
     //
     //

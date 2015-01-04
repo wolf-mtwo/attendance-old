@@ -10,9 +10,9 @@ module.exports = function(Groups, app, auth, database) {
     .post(auth.requiresLogin, groups.create);
 
   app.route('/groups/:groupId')
-    .get(auth.isMongoId, groups.show);
-  //   .put(auth.isMongoId, auth.requiresLogin, groups.update)
-  //   .delete(auth.isMongoId, auth.requiresLogin, groups.destroy);
+    .get(auth.isMongoId, groups.show)
+    .put(auth.isMongoId, auth.requiresLogin, groups.update)
+    .delete(auth.isMongoId, auth.requiresLogin, groups.destroy);
 
     // Finish with setting up the articleId param
   app.param('groupId', groups.getById);
