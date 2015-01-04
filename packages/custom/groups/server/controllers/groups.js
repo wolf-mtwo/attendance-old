@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
 /**
  * Find article by id
  */
-exports.institucion = function(req, res, next, id) {
+exports.getById = function(req, res, next, id) {
     CurrentModel.load(id, function(err, item) {
         if (err) return next(err);
         if (!item) return next(new Error('Failed to load item ' + id));
@@ -26,19 +26,19 @@ exports.institucion = function(req, res, next, id) {
  * Create an article
  */
 exports.create = function(req, res) {
-    var value = new CurrentModel(req.body);
-    value.user = req.user;
+  var value = new CurrentModel(req.body);
+  value.user = req.user;
 
-    value.save(function(err) {
-        if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                institucion: value
-            });
-        } else {
-            res.jsonp(value);
-        }
-    });
+  value.save(function(err) {
+      if (err) {
+          return res.send('users/signup', {
+              errors: err.errors,
+              object: value
+          });
+      } else {
+          res.jsonp(value);
+      }
+  });
 };
 
 /**

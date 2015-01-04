@@ -9,13 +9,13 @@ module.exports = function(Groups, app, auth, database) {
     .get(groups.all)
     .post(auth.requiresLogin, groups.create);
 
-  // app.route('/groups/:articleId')
-  //   .get(auth.isMongoId, groups.show)
+  app.route('/groups/:groupId')
+    .get(auth.isMongoId, groups.show);
   //   .put(auth.isMongoId, auth.requiresLogin, groups.update)
   //   .delete(auth.isMongoId, auth.requiresLogin, groups.destroy);
 
     // Finish with setting up the articleId param
-  app.param('articleId', groups.institucion);
+  app.param('groupId', groups.getById);
 
   app.get('/groups/example/anyone', function(req, res, next) {
     res.send('Anyone can access this');

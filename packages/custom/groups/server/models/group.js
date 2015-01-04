@@ -18,6 +18,14 @@ var GroupSchema = new Schema({
     user: {
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    position: {
+      type: Number,
+      default: null
+    },
+    created: {
+      type: Date,
+      default: Date.now
     }
 });
 

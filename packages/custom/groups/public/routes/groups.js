@@ -6,5 +6,9 @@ angular.module('mean.groups').config(['$stateProvider',
       url: '/groups/example',
       templateUrl: 'groups/views/index.html'
     });
+    $stateProvider.state('groups-index', {
+      url: '/groups',
+      templateUrl: 'groups/views/index.html'
+    });
   }
 ]);
