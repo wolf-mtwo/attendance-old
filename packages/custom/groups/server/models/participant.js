@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
  * Article Schema
  */
 var Schema = new Schema({
-    nombre: {
+    name: {
         type: String,
         default: ''
     },

@@ -25,7 +25,7 @@ angular.module('mean.groups').config(['$stateProvider',
     });
 
     $stateProvider.state('groups-detail-participant', {
-      url: '/groups/:groupId/participant/create',
+      url: '/groups/:groupId/participants/create',
       templateUrl: path + '/views/participant/create.html'
     });
   }

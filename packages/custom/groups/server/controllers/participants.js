@@ -37,16 +37,18 @@ exports.group = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
   var value = new CurrentModel(req.body);
+
   value.group = req.group;
+
   value.save(function(err) {
-      if (err) {
-          return res.send('users/signup', {
-              errors: err.errors,
-              object: value
-          });
-      } else {
-          res.jsonp(value);
-      }
+    if (err) {
+      return res.send('users/signup', {
+        errors: err.errors,
+        object: value
+      });
+    } else {
+      res.jsonp(value);
+    }
   });
 };
 

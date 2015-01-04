@@ -1,20 +1,18 @@
 'use strict';
 
-angular.module('mean.groups').controller('ParticipantController', ['$scope', '$attrs', '$stateParams', '$location', 'Global', 'Estudiantes',
+angular.module('mean.groups').controller('ParticipantController', ['$scope', '$attrs', '$stateParams', '$location', 'Global', 'Participants',
 
-	function($scope, $attrs, $stateParams, $location, Global, Estudiantes) {
+	function($scope, $attrs, $stateParams, $location, Global, Participants) {
         $scope.global = Global;
 
         $scope.create = function() {
-					console.log('ddddddddddd');
-            var value = new Estudiantes({
-                nombre: this.nombre,
+            var value = new Participants({
+                name: this.name,
                 email: this.email,
                 groupId: $stateParams.groupId
             });
             value.$save(function(response) {
-							console.log(response);
-                // $scope.find();
+							$location.path('groups/' + $stateParams.groupId);
             });
         };
 
@@ -50,19 +48,19 @@ angular.module('mean.groups').controller('ParticipantController', ['$scope', '$a
     //     };
 		//
     //     $scope.find = function() {
-    //     	Estudiantes.query(function(value) {
+    //     	Participants.query(function(value) {
     //              $scope.estudiantes = value;
     //         });
     //     };
 		//
     //     $scope.findbyinst = function() {
-    //         Estudiantes.query(function(value) {
+    //         Participants.query(function(value) {
     //              $scope.estudiantes = value;
     //         });
     //     };
 		//
     //     $scope.findOne = function() {
-    //         Estudiantes.get({
+    //         Participants.get({
     //             estudianteId: $stateParams.estudianteId
     //         }, function(estudiante) {
     //             $scope.estudiante = estudiante;

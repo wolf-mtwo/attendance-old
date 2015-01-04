@@ -1,22 +1,19 @@
 <div data-ng-controller="GroupsController" data-ng-init="findOne()">
     <h1>{{group.title}}</h1>
 
-  <!-- <div class="list-group">
+  <div class="list-group">
       <a data-ng-href="#!/groups/{{group._id}}"
       class="list-group-item"
-      data-ng-repeat="group in groups"
+      data-ng-repeat="participant in participants"
       >
-      {{group.title}}
-    </a>
-    <a href="#!/groups/create" class="list-group-item active">
-      Create new group
+      {{participant.nombre}}
     </a>
   </div>
-   -->
+
    <div class="list-group">
-     <a href="#!/groups/{{group._id}}/participant/create" class="list-group-item active">
+     <a href="#!/groups/{{group._id}}/participants/create" class="list-group-item active">
        Nuevo Participante
-     </a>
+     </a>s
    </div>
 
     <a class="btn" href="/#!/institucion/{{institucion._id}}/edit">
@@ -49,29 +46,6 @@
                 </span>
             </span>
         </ul>
-        <form class="form-horizontal col-md-9" role="form" data-ng-submit="create()">
-            <div class="form-group">
-                <label mean-token="'create-nombre'" class="col-md-3 control-label">
-                    Nombre
-                </label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label mean-token="'create-email'" class="col-md-3 control-label">
-                    Email
-                </label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" data-ng-model="email" id="email" placeholder="Email" required>
-                </div>
-            </div>
-            <input type="hidden" name="institucion" value='institucion'>
-            <div class="form-group">
-                <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-info">Crear</button>
-                </div>
-            </div>
-        </form>
+
     </div>
 </div>
