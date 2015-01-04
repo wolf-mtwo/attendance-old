@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     CurrentModel = mongoose.model('Day'),
     Institucion = mongoose.model('Institucion'),
     _ = require('lodash');
-    
+
 
 
 exports.day = function(req, res, next, id) {
@@ -36,7 +36,7 @@ exports.create = function(req, res) {
     var value = new CurrentModel(req.body);
     //res.jsonp({dddd: req.body.institucionId});
     Institucion.load(req.body.institucionId, function(err, item) {
-        
+
         if (!item) return new Error('Failed to load item ' + req.body.institucionId);
         value.institucion = item;
         value.save(function(err) {
@@ -51,7 +51,7 @@ exports.create = function(req, res) {
         });
     });
 
-    
+
 };
 
 /**
@@ -115,7 +115,7 @@ exports.all = function(req, res) {
 };
 
 exports.allByInstitucion = function(req, res) {
-    
+
     //req.params.name
     CurrentModel.find({ institucion: req.institucion }).exec(function(err, items) {
         if (err) {

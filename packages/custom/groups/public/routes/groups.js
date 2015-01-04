@@ -7,7 +7,7 @@ angular.module('mean.groups').config(['$stateProvider',
       templateUrl: 'groups/views/index.html'
     });
 
-    var path = 'groups/';
+    var path = 'groups';
 
     $stateProvider.state('groups-index', {
       url: '/groups',
@@ -17,6 +17,16 @@ angular.module('mean.groups').config(['$stateProvider',
     $stateProvider.state('groups-create', {
       url: '/groups/create',
       templateUrl: path + '/views/create.html'
+    });
+
+    $stateProvider.state('groups-detail', {
+      url: '/groups/:groupId',
+      templateUrl: path + '/views/view.html'
+    });
+
+    $stateProvider.state('groups-detail-participant', {
+      url: '/groups/:groupId/participant/create',
+      templateUrl: path + '/views/participant/create.html'
     });
   }
 ]);

@@ -1,12 +1,31 @@
-<section data-ng-controller="InstitucionController" data-ng-init="findOne()">
-    <h2>{{institucion.title}}</h2>
+<div data-ng-controller="GroupsController" data-ng-init="findOne()">
+    <h1>{{group.title}}</h1>
+
+  <!-- <div class="list-group">
+      <a data-ng-href="#!/groups/{{group._id}}"
+      class="list-group-item"
+      data-ng-repeat="group in groups"
+      >
+      {{group.title}}
+    </a>
+    <a href="#!/groups/create" class="list-group-item active">
+      Create new group
+    </a>
+  </div>
+   -->
+   <div class="list-group">
+     <a href="#!/groups/{{group._id}}/participant/create" class="list-group-item active">
+       Nuevo Participante
+     </a>
+   </div>
+
     <a class="btn" href="/#!/institucion/{{institucion._id}}/edit">
         <i class="glyphicon glyphicon-edit"></i>
     </a>
     <a class="btn" data-ng-click="remove(institucion);">
         <i class="glyphicon glyphicon-trash"></i>
     </a>
-    <section ng-controller="EstudiantesController" data-ng-init="">
+    <div ng-controller="EstudiantesController" data-ng-init="">
     <h1>Estudiantes</h1>
     <div ></div>
     <input type="hidden" name="institucion" value='institucion'>
@@ -27,7 +46,7 @@
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </li>
-                </span>  
+                </span>
             </span>
         </ul>
         <form class="form-horizontal col-md-9" role="form" data-ng-submit="create()">
@@ -54,6 +73,5 @@
                 </div>
             </div>
         </form>
-    </section>
-</section>
-
+    </div>
+</div>

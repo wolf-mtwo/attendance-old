@@ -32,6 +32,18 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
       });
     };
 
+    $scope.findOne = function() {
+      Groups.get({
+        groupId: $stateParams.groupId
+      }, function(response) {
+        console.log(response);
+        //$scope.global.institucion = institucion;
+        $scope.group = response;
+      });
+    };
+
+
+
 
 
     $scope.llamarlista = function() {
@@ -79,14 +91,6 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
     };
 
 
-    $scope.findOne = function() {
-      Groups.get({
-        institucionId: $stateParams.institucionId
-      }, function(institucion) {
-        //$scope.global.institucion = institucion;
-        $scope.institucion = institucion;
-      });
-    };
 
     $scope.estaOk2 = function(estudiante) {
       if (!estudiante || estudiante.institucion !== $scope.institucion._id) return false;

@@ -19,9 +19,9 @@ var Schema = new Schema({
         type: String,
         default: ''
     },
-    institucion: {
+    group: {
         type: Schema.ObjectId,
-        ref: 'Institucion'
+        ref: 'Group'
     }
 });
 
@@ -31,7 +31,7 @@ var Schema = new Schema({
 Schema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('intitucion', 'title').exec(cb);
+    }).populate('Group', 'title').exec(cb);
 };
 
-mongoose.model('Estudiante', Schema);
+mongoose.model('Participant', Schema);

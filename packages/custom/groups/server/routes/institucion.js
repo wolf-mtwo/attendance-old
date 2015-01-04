@@ -31,7 +31,7 @@ module.exports = function(Institucion, app, auth, database) {
 
 module.exports = function(Articles, app, auth) {
 
-    
+
     app.route('/articles/:articleId')
         .get(articles.show)
         .put(auth.requiresLogin, hasAuthorization, articles.update)

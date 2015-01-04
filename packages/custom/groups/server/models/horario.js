@@ -18,9 +18,9 @@ var Schema = new Schema({
     status: {
         type: String
     },
-    estudiante: {
+    participant: {
         type: Schema.ObjectId,
-        ref: 'Estudiante'
+        ref: 'Participant'
     }
 });
 
@@ -30,7 +30,7 @@ var Schema = new Schema({
 Schema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('day', 'institucion').populate('estudiante', 'nombre email').exec(cb);
+    }).populate('day', 'institucion').populate('participant', 'nombre email').exec(cb);
 };
 
 mongoose.model('Horario', Schema);

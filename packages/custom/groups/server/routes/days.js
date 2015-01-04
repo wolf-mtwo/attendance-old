@@ -12,4 +12,3 @@ module.exports = function(Days, app, auth, database) {
     app.param('dayId', controller.day);
     app.param('institucionId', controller.institucion);
 };
-

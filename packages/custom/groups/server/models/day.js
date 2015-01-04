@@ -13,7 +13,7 @@ var Schema = new Schema({
     },
     institucion: {
         type: Schema.ObjectId,
-        ref: 'Institucion'
+        ref: 'Participant'
     }
 });
 

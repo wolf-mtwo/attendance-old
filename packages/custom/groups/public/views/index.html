@@ -1,22 +1,15 @@
 <div class="" data-ng-controller="GroupsController" data-ng-init="find()">
   <h1>Group</h1>
   <div class="list-group">
-    <a href="#" class="list-group-item" data-ng-repeat="group in groups">
+    <a data-ng-href="#!/groups/{{group._id}}"
+       class="list-group-item"
+       data-ng-repeat="group in groups"
+      >
       {{group.title}}
     </a>
     <a href="#!/groups/create" class="list-group-item active">
-      Create new group
+      Nuevo grupo
     </a>
   </div>
-    <!-- <ul class="instituciones unstyled">
-      <li data-ng-repeat="institucion in instituciones">
-        <h2>
-          <a data-ng-href="#!/institucion/{{institucion._id}}">{{institucion.title}}</a>
-          <a class="btn" data-ng-click="remove(institucion);">
-            <i class="glyphicon glyphicon-trash"></i>
-          </a>
-        </h2>
-      </li>
-    </ul> -->
   <p class="alert alert-warning">MEAN versions prior to 0.3.2 will be in /node_modules/groups</p>
 </div>

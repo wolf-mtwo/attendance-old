@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 /**
  * Article Schema
  */
-var GroupSchema = new Schema({
+var GSchema = new Schema({
     title: {
         type: String,
         default: ''
@@ -32,10 +32,10 @@ var GroupSchema = new Schema({
 /**
  * Statics
  */
-GroupSchema.statics.load = function(id, cb) {
+GSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).populate('user', 'name username').exec(cb);
 };
 
-mongoose.model('Group', GroupSchema);
+mongoose.model('Group', GSchema);
