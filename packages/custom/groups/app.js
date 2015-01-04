@@ -24,6 +24,8 @@ Groups.register(function(app, auth, database) {
     menu: 'main'
   });
 
+
+
   Groups.menus.add({
     title: 'Groups',
     link: 'groups example page',

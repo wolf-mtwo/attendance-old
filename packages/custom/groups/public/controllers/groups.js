@@ -15,15 +15,24 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
     $scope.global = Global;
     $scope.actuales = [];
 
+    $scope.find = function() {
+      Groups.query(function(value) {
+        $scope.groups = value;
+      });
+    };
+
     $scope.create = function() {
       var value = new Groups({
         title: this.title,
         content: this.content
       });
       value.$save(function(response) {
-        $location.path('institucion/' + response._id);
+        $location.path('groups');
+        // $location.path('institucion/' + response._id);
       });
     };
+
+
 
     $scope.llamarlista = function() {
       $http.post('/day', {
@@ -69,11 +78,6 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
       });
     };
 
-    $scope.find = function() {
-      Groups.query(function(value) {
-        $scope.instituciones = value;
-      });
-    };
 
     $scope.findOne = function() {
       Groups.get({
