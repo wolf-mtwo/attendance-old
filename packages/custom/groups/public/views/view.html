@@ -1,6 +1,10 @@
-<div data-ng-controller="GroupsController" data-ng-init="findOne()">
-    <h1>{{group.title}}</h1>
-
+<div class="w-group-index" data-ng-controller="GroupsController" data-ng-init="findOne()">
+  <h1>{{group.title}} > participantes</h1>
+  <div class="text-right btns">
+    <a href="#!/groups/{{group._id}}/attendance" class="btn btn-info">
+      Asistencia
+    </a>
+  </div>
   <div class="list-group">
       <a data-ng-href="#!/groups/{{group._id}}"
          class="list-group-item"
@@ -23,3 +27,8 @@
     </a>
   </div>
 </div>
+<style media="screen">
+.w-group-index .btns {
+  padding-bottom: 10px
+}
+</style>

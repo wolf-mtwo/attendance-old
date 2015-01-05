@@ -1,17 +1,6 @@
 'use strict';
-
-// angular.module('mean.groups').controller('InstitucionController', ['$scope', '$http', '$stateParams', '$location', 'Global', 'Institucion', 'Participants',
-// function($scope, $http, $stateParams, $location, Global, Institucion, Participants) {
-
-// angular.module('mean.groups').controller('GroupsController', ['$scope', 'Global', 'Groups',
-//   function($scope, Global, Groups) {
 angular.module('mean.groups').controller('GroupsController', ['$scope', '$http', '$stateParams', '$location', 'Global', 'Groups', 'Participants',
   function($scope, $http, $stateParams, $location, Global, Groups, Participants) {
-    // $scope.global = Global;
-    // $scope.package = {
-    //   name: 'groups'
-    // };
-
     $scope.global = Global;
     $scope.actuales = [];
     $scope.group = {};
@@ -40,11 +29,7 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
         $scope.group = response;
       });
 
-      Participants.query({
-        groupId: $stateParams.groupId
-      }, function(response) {
-        $scope.participants = response;
-      });
+      $scope.loadParticipants();
     };
 
     $scope.remove = function(item) {
@@ -94,37 +79,7 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
     //   return estudiante;
     // };
     //
-    // $scope.presente = function(estudiante) {
-    //   for (var i in $scope.estudiantes) {
-    //     if ($scope.estudiantes[i] === estudiante) {
-    //       $scope.estudiantes.splice(i, 1);
-    //     }
-    //   }
-    //   estudiante.status = 'presente';
-    //   $scope.actuales.push(estudiante);
-    // };
-    //
-    // $scope.permiso = function(estudiante) {
-    //   for (var i in $scope.estudiantes) {
-    //     if ($scope.estudiantes[i] === estudiante) {
-    //       $scope.estudiantes.splice(i, 1);
-    //     }
-    //   }
-    //   estudiante.status = 'permiso';
-    //   $scope.actuales.push(estudiante);
-    //   console.log('permiso');
-    // };
-    //
-    // $scope.fin = function(estudiante) {
-    //   for (var i in $scope.estudiantes) {
-    //     if ($scope.estudiantes[i] === estudiante) {
-    //       $scope.estudiantes.splice(i, 1);
-    //     }
-    //   }
-    //   estudiante.status = 'fin';
-    //   $scope.estudiantes.push(estudiante);
-    //   console.log('fin');
-    // };
+
     //
     // $scope.falta = function(estudiante) {
     //   $scope.estudiantes.push(estudiante);
@@ -136,16 +91,65 @@ angular.module('mean.groups').controller('GroupsController', ['$scope', '$http',
     //   console.log('falta');
     // };
     //
-    // /* vista en detalle listo para llamar lista*/
-    // $scope.findOneByestudents = function() {
-    //   Groups.get({
-    //     institucionId: $stateParams.institucionId
-    //   }, function(institucion) {
-    //     $scope.institucion = institucion;
-    //     Participants.query(function(value) {
-    //       $scope.estudiantes = value;
-    //     });
-    //   });
-    // };
+    /* vista en detalle listo para llamar lista*/
+    $scope.findOneByestudents = function() {
+      Groups.get({
+        groupId: $stateParams.groupId
+      }, function(institucion) {
+        $scope.institucion = institucion;
+      });
+      $scope.loadParticipants();
+    };
+
+    $scope.loadParticipants = function() {
+      Participants.query({
+        groupId: $stateParams.groupId
+      }, function(response) {
+        $scope.participants = response;
+      });
+    };
+
+    // Take attendance
+    $scope.changeStatus = function(participant, status) {
+      // for (var i in $scope.estudiantes) {
+      //   if ($scope.estudiantes[i] === estudiante) {
+      //     $scope.estudiantes.splice(i, 1);
+      //   }
+      // }
+      participant.status = status;
+      // $scope.actuales.push(estudiante);
+    };
+
+    $scope.presente = function(estudiante) {
+      for (var i in $scope.estudiantes) {
+        if ($scope.estudiantes[i] === estudiante) {
+          $scope.estudiantes.splice(i, 1);
+        }
+      }
+      estudiante.status = 'presente';
+      $scope.actuales.push(estudiante);
+    };
+
+    $scope.permiso = function(estudiante) {
+      for (var i in $scope.estudiantes) {
+        if ($scope.estudiantes[i] === estudiante) {
+          $scope.estudiantes.splice(i, 1);
+        }
+      }
+      estudiante.status = 'permiso';
+      $scope.actuales.push(estudiante);
+      console.log('permiso');
+    };
+
+    $scope.fin = function(estudiante) {
+      for (var i in $scope.estudiantes) {
+        if ($scope.estudiantes[i] === estudiante) {
+          $scope.estudiantes.splice(i, 1);
+        }
+      }
+      estudiante.status = 'fin';
+      $scope.estudiantes.push(estudiante);
+      console.log('fin');
+    };
   }
 ]);

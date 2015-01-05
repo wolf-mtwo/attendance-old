@@ -34,6 +34,11 @@ angular.module('mean.groups').config(['$stateProvider',
       templateUrl: path + '/views/view.html'
     });
 
+    $stateProvider.state('groups-attendance', {
+      url: '/groups/:groupId/attendance',
+      templateUrl: path + '/views/attendance/index.html'
+    });
+
     $stateProvider.state('groups-detail-participant', {
       url: '/groups/:groupId/participants/create',
       templateUrl: path + '/views/participant/create.html'
