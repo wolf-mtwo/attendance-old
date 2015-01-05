@@ -1,59 +1,34 @@
-<section data-ng-controller="InstitucionController" data-ng-init="findOne()">
-    <h2>{{institucion.title}}</h2>
-    <a class="btn" href="/#!/institucion/{{institucion._id}}/edit">
+<div class="w-group-index" data-ng-controller="GroupsController" data-ng-init="findOne()">
+  <h1>{{group.title}} > participantes</h1>
+  <div class="text-right btns">
+    <a href="#!/groups/{{group._id}}/attendance" class="btn btn-info">
+      Asistencia
+    </a>
+  </div>
+  <div class="list-group">
+      <a data-ng-href="#!/groups/{{group._id}}"
+         class="list-group-item"
+         data-ng-repeat="participant in participants">
+        {{participant.name}}
+    </a>
+  </div>
+
+  <div class="list-group">
+    <a href="#!/groups/{{group._id}}/participants/create" class="list-group-item active">
+      Nuevo Participante
+    </a>
+  </div>
+  <div class="text-right">
+    <a class="btn" href="/#!/groups/{{group._id}}/edit">
         <i class="glyphicon glyphicon-edit"></i>
     </a>
-    <a class="btn" data-ng-click="remove(institucion);">
-        <i class="glyphicon glyphicon-trash"></i>
+    <a class="btn" href="/#!/groups/{{group._id}}/remove">
+      <i class="glyphicon glyphicon-trash"></i>
     </a>
-    <section ng-controller="EstudiantesController" data-ng-init="">
-    <h1>Estudiantes</h1>
-    <div ></div>
-    <input type="hidden" name="institucion" value='institucion'>
-    <button type="button" class="btn btn-default btn-lg" data-ng-click="find();">
-        Star
-    </button>
-    <br>
-    <br>
-    <br>
-        <ul class="list-group">
-            <span data-ng-repeat="estudiante in estudiantes">
-                <span data-ng-if="estaOk(estudiante)">
-                    <li class="list-group-item">
-                        <a data-ng-href="#!/estudiante/{{estudiante._id}}/institucion/{{institucion._id}}">
-                            {{estudiante.nombre}}
-                        </a>
-                        <a class="btn" data-ng-click="remove(estudiante);">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </a>
-                    </li>
-                </span>  
-            </span>
-        </ul>
-        <form class="form-horizontal col-md-9" role="form" data-ng-submit="create()">
-            <div class="form-group">
-                <label mean-token="'create-nombre'" class="col-md-3 control-label">
-                    Nombre
-                </label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label mean-token="'create-email'" class="col-md-3 control-label">
-                    Email
-                </label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" data-ng-model="email" id="email" placeholder="Email" required>
-                </div>
-            </div>
-            <input type="hidden" name="institucion" value='institucion'>
-            <div class="form-group">
-                <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-info">Crear</button>
-                </div>
-            </div>
-        </form>
-    </section>
-</section>
-
+  </div>
+</div>
+<style media="screen">
+.w-group-index .btns {
+  padding-bottom: 10px
+}
+</style>

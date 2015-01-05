@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    
+
      CurrentModel = mongoose.model('Institucion'),
      _ = require('lodash');
-    
+
 
 
 /**
@@ -93,7 +93,7 @@ exports.show = function(req, res) {
  * List of Articles
  */
 exports.all = function(req, res) {
-    
+
     //Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
     CurrentModel.find({ user: req.user }).exec(function(err, items) {
         if (err) {

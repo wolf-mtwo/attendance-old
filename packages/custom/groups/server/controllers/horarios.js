@@ -5,11 +5,11 @@
  */
 var mongoose = require('mongoose'),
     CurrentModel = mongoose.model('Horario'),
-    Estudiante = mongoose.model('Estudiante'),
+    Estudiante = mongoose.model('Participant'),
     Institucion = mongoose.model('Institucion'),
     Day = mongoose.model('Day'),
     _ = require('lodash');
-    
+
 
 
 exports.horario = function(req, res, next, id) {
@@ -29,7 +29,7 @@ exports.create = function(req, res) {
     //res.jsonp({dddd: req.body.institucionId});
     Estudiante.load(req.body.estudianteId, function(err, item) {
         Day.load(req.body.dayId, function(err, day) {
-        
+
             //if (!item) return new Error('Failed to load item ' + req.body.institucionId);
             //value.estudiante_id = req.body.estudianteId;
             value.estudiante = item;
@@ -50,7 +50,7 @@ exports.create = function(req, res) {
         });
     });
 
-    
+
 };
 
 /**
@@ -122,7 +122,7 @@ exports.horest = function(req, res) {
     //         })
 
     Estudiante.load(req.body.estudianteId, function(err, item) {
-                    
+
                 CurrentModel.find({estudiante : item }).exec(function(err, items) {
                     if (err) {
                         res.render('error', {
@@ -132,10 +132,10 @@ exports.horest = function(req, res) {
                         res.jsonp(items);
                     }
                 });
-            
+
     });
 
-    
+
 };
 
 
@@ -149,7 +149,7 @@ exports.horinst = function(req, res) {
             } else {
                 res.jsonp(items);
             }
-        }); 
+        });
     });
 };
 
@@ -164,6 +164,6 @@ exports.horday = function(req, res) {
             } else {
                 res.jsonp(items);
             }
-        }); 
+        });
     });
 };
