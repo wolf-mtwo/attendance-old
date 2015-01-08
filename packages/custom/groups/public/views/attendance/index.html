@@ -1,69 +1,29 @@
 <div class="w-attendance-index" data-ng-controller="GroupsController" data-ng-init="findOneByestudents()">
-<style media="screen">
-.w-attendance-index {
+  <h1>{{group.title}} > participantes ></h1>
+  <h2>{{institucion.title}}</h2>
+  <div class="w-list-group">
+    <div class="w-list-group-item"
+         ng-class="{2:'attended', 1:'permission', null:'fail'}[participant.status]"
+         data-ng-repeat="participant in participants">
 
-}
-.w-attendance-index .w-list-group {
-}
+    <a href="#!/groups/create">
+      {{participant.name}}
+      {{participant.status}}
+    </a>
+      <div style="float: right;margin-top:-7px;">
 
-.w-attendance-index .w-list-group-item {
-  padding: 10px 15px;
-  border-radius: 4px;
+        <i class="glyphicon glyphicon-ok"></i>
 
-  border: 1px solid rgba(215, 215, 215, 1);
-  border-style: dashed;
-}
-
-.w-attendance-index .w-list-group-item a {
-  color: #333;
-}
-
-.w-attendance-index .attended, .w-attendance-index .fail, .w-attendance-index .permission {
-  border-style: solid;
-  border-color: #fff;
-}
-
-.w-attendance-index .attended a, .w-attendance-index .fail a, .w-attendance-index .permission a {
-  color: white;
-}
-
-.w-attendance-index .attended {
-  background: #5CB85C;
-
-}
-.w-attendance-index .permission {
-  background: #F0AD4E;
-}
-
-.w-attendance-index .fail {
-  background: #D9534F;
-}
-</style>
-
-    <h2>{{institucion.title}}</h2>
-    <div class="w-list-group">
-      <div class="w-list-group-item"
-           ng-class="{2:'attended', 1:'permission', null:'fail'}[participant.status]"
-           data-ng-repeat="participant in participants">
-
-      <a href="#!/groups/create">
-        {{participant.name}}
-        {{participant.status}}
-      </a>
-        <div style="float: right;margin-top:-7px;">
-
-          <i class="glyphicon glyphicon-ok"></i>
-
-          <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
-            <i class="glyphicon glyphicon-thumbs-up"></i>
-          </a>
-          <a class="btn btn-warning" data-ng-click="changeStatus(participant, 1)">
-            <i class="glyphicon glyphicon-hand-right"></i>
-          </a>
-          <a class="btn btn-danger" data-ng-click="changeStatus(participant, null)">
-            <i class="glyphicon glyphicon-thumbs-down"></i>
-          </a>
-        </div>
+        <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        </a>
+        <a class="btn btn-warning" data-ng-click="changeStatus(participant, 1)">
+          <i class="glyphicon glyphicon-hand-right"></i>
+        </a>
+        <a class="btn btn-danger" data-ng-click="changeStatus(participant, null)">
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+        </a>
       </div>
     </div>
+  </div>
 </div>

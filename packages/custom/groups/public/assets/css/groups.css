@@ -1,3 +1,38 @@
-.groups-example h1 {
-  background-color: purple
+.w-attendance-index {
+
+}
+.w-attendance-index .w-list-group {
+}
+
+.w-attendance-index .w-list-group-item {
+  padding: 10px 15px;
+  border-radius: 4px;
+
+  border: 1px solid rgba(215, 215, 215, 1);
+  border-style: dashed;
+}
+
+.w-attendance-index .w-list-group-item a {
+  color: #333;
+}
+
+.w-attendance-index .attended, .w-attendance-index .fail, .w-attendance-index .permission {
+  border-style: solid;
+  border-color: #fff;
+}
+
+.w-attendance-index .attended a, .w-attendance-index .fail a, .w-attendance-index .permission a {
+  color: white;
+}
+
+.w-attendance-index .attended {
+  background: #5CB85C;
+
+}
+.w-attendance-index .permission {
+  background: #F0AD4E;
+}
+
+.w-attendance-index .fail {
+  background: #D9534F;
 }
