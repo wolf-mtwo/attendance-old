@@ -4,49 +4,36 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+  CurrentModel = mongoose.model('Group'),
+  _ = require('lodash');
 
-     CurrentModel = mongoose.model('Group'),
-     _ = require('lodash');
-
-
-
-/**
- * Find article by id
- */
 exports.getById = function(req, res, next, id) {
-    CurrentModel.load(id, function(err, item) {
-        if (err) return next(err);
-        if (!item) return next(new Error('Failed to load item ' + id));
-        req.institucion = item;
-        next();
-    });
+  CurrentModel.load(id, function(err, item) {
+    if (err) return next(err);
+    if (!item) return next(new Error('Failed to load item ' + id));
+    req.group = item;
+    next();
+  });
 };
 
-/**
- * Create an article
- */
 exports.create = function(req, res) {
   var value = new CurrentModel(req.body);
   value.user = req.user;
 
   value.save(function(err) {
-      if (err) {
-          return res.send('users/signup', {
-              errors: err.errors,
-              object: value
-          });
-      } else {
-          res.jsonp(value);
-      }
+    if (err) {
+      return res.send('users/signup', {
+        errors: err.errors,
+        object: value
+      });
+    } else {
+      res.jsonp(value);
+    }
   });
 };
 
-/**
- * Update an article
- */
 exports.update = function(req, res) {
   var item = req.group;
-
   item = _.extend(item, req.body);
 
   item.save(function(err) {
@@ -61,9 +48,6 @@ exports.update = function(req, res) {
   });
 };
 
-/**
- * Delete an article
- */
 exports.destroy = function(req, res) {
   var item = req.group;
 
@@ -79,26 +63,18 @@ exports.destroy = function(req, res) {
   });
 };
 
-/**
- * Show an article
- */
 exports.show = function(req, res) {
-    res.jsonp(req.institucion);
+  res.jsonp(req.group);
 };
 
-/**
- * List of Articles
- */
 exports.all = function(req, res) {
-
-    //Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
-    CurrentModel.find({ user: req.user }).exec(function(err, items) {
-        if (err) {
-            res.render('error', {
-                status: 500
-            });
-        } else {
-            res.jsonp(items);
-        }
-    });
+  CurrentModel.find({ user: req.user }).exec(function(err, items) {
+    if (err) {
+      res.render('error', {
+        status: 500
+      });
+    } else {
+      res.jsonp(items);
+    }
+  });
 };
