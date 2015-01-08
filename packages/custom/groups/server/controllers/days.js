@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
     CurrentModel = mongoose.model('Day'),
-    Institucion = mongoose.model('Institucion'),
+    Group = mongoose.model('Group'),
     _ = require('lodash');
 
 
@@ -21,7 +21,7 @@ exports.day = function(req, res, next, id) {
 
 exports.institucion = function(req, res, next, id) {
 
-    Institucion.load(id, function(err, item) {
+    Group.load(id, function(err, item) {
         if (err) return next(err);
         if (!item) return next(new Error('Failed to load item ' + id));
         req.institucion = item;
@@ -35,7 +35,7 @@ exports.institucion = function(req, res, next, id) {
 exports.create = function(req, res) {
     var value = new CurrentModel(req.body);
     //res.jsonp({dddd: req.body.institucionId});
-    Institucion.load(req.body.institucionId, function(err, item) {
+    Group.load(req.body.institucionId, function(err, item) {
 
         if (!item) return new Error('Failed to load item ' + req.body.institucionId);
         value.institucion = item;

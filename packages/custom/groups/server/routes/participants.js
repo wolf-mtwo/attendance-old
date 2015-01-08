@@ -4,13 +4,11 @@ var controller = require('../controllers/participants');
 
 module.exports = function(Participants, app, auth, database) {
     app.get('/groups/:groupId/participants', controller.all);
-    // app.post('/estudiante', controller.create);
     app.post('/groups/:groupId/participants', controller.create);
-    // app.put('/estudiante/:estudianteId', controller.update);
-    // app.delete('/estudiante/:estudianteId', controller.destroy);
-    // app.get('/estudiante/:estudianteId', controller.show);
-    // app.get('/estudiante/:institucionId/institucion', controller.allByInstitucion);
-    // app.param('estudianteId', controller.estudiante);
-    // app.param('institucionId', controller.institucion);
+
+    app.put('/groups/:groupId/participants/:participantId', controller.update);
+    app.delete('/groups/:groupId/participants/:participantId', controller.destroy);
+    app.get('/groups/:groupId/participants/:participantId', controller.show);
+    app.param('participantId', controller.participant);
     app.param('groupId', controller.group);
 };

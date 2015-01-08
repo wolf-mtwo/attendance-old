@@ -24,29 +24,6 @@ Groups.register(function(app, auth, database) {
     menu: 'main'
   });
 
-
-
-  Groups.menus.add({
-    title: 'Groups',
-    link: 'groups example page',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
-
-  Groups.menus.add({
-    title: 'Crear Institucion',
-    link: 'new institucion',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
-
-  Groups.menus.add({
-    title: 'Institucion',
-    link: 'list institucion',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
-
   Groups.menus.add({
     title: 'Attendace',
     link: 'generator institucion',

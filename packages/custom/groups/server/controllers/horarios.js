@@ -6,11 +6,9 @@
 var mongoose = require('mongoose'),
     CurrentModel = mongoose.model('Horario'),
     Estudiante = mongoose.model('Participant'),
-    Institucion = mongoose.model('Institucion'),
+    Group = mongoose.model('Group'),
     Day = mongoose.model('Day'),
     _ = require('lodash');
-
-
 
 exports.horario = function(req, res, next, id) {
     CurrentModel.load(id, function(err, item) {
@@ -140,7 +138,7 @@ exports.horest = function(req, res) {
 
 
 exports.horinst = function(req, res) {
-    Institucion.load(req.body.institucionId, function(err, item) {
+    Group.load(req.body.institucionId, function(err, item) {
         Day.find({institucion : item }).exec(function(err, items) {
             if (err) {
                 res.render('error', {
