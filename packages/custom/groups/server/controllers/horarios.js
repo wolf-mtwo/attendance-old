@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     CurrentModel = mongoose.model('Horario'),
     Estudiante = mongoose.model('Participant'),
     Group = mongoose.model('Group'),
-    Day = mongoose.model('Day'),
+    Day = mongoose.model('Attendance'),
     _ = require('lodash');
 
 exports.horario = function(req, res, next, id) {
