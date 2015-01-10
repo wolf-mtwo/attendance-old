@@ -7,23 +7,20 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var Schema = new Schema({
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    institucion: {
-        type: Schema.ObjectId,
-        ref: 'Participant'
-    }
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  group: {
+    type: Schema.ObjectId,
+    ref: 'Group'
+  }
 });
 
-/**
- * Statics
- */
 Schema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('intitucion', 'title').exec(cb);
+    }).populate('group', 'title').exec(cb);
 };
 
 mongoose.model('Day', Schema);

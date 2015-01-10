@@ -3,12 +3,12 @@
 var controller = require('../controllers/days');
 
 module.exports = function(Days, app, auth, database) {
-    app.get('/day', controller.all);
-    app.post('/day', controller.create);
-    app.put('/day/:dayId', controller.update);
-    app.delete('/day/:dayId', controller.destroy);
-    app.get('/day/:dayId', controller.show);
-    app.get('/day/:institucionId/institucion', controller.allByInstitucion);
-    app.param('dayId', controller.day);
-    app.param('institucionId', controller.institucion);
+  var path = '/groups/:groupId/days/';
+  app.get(path, controller.all);
+  app.post(path, controller.create);
+  app.put(path + ':dayId', controller.update);
+  app.delete(path + ':dayId', controller.destroy);
+  app.get(path + ':dayId', controller.show);
+  app.param('dayId', controller.day);
+  app.param('groupId', controller.group);
 };

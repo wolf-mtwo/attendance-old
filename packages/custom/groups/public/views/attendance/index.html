@@ -1,10 +1,9 @@
-<div class="w-attendance-index" data-ng-controller="GroupsController" data-ng-init="findOneByestudents()">
-  <h1>{{group.title}} > participantes ></h1>
-  <h2>{{institucion.title}}</h2>
+<div class="w-attendance-index" data-ng-controller="AttendanceController" data-ng-init="init()">
+  <h2>{{group.title}} > participantes > {{day.created | date: 'medium'}}</h2>
   <div class="w-list-group">
     <div class="w-list-group-item"
-         ng-class="{2:'attended', 1:'permission', null:'fail'}[participant.status]"
-         data-ng-repeat="participant in participants">
+         data-ng-repeat="participant in participants"
+         ng-class="{2:'attended', 1:'permission', null:'fail'}[participant.status]">
 
     <a href="#!/groups/create">
       {{participant.name}}
