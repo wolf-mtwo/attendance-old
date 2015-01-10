@@ -1,5 +1,5 @@
 <div class="w-attendance-index" data-ng-controller="AttendanceController" data-ng-init="init()">
-  <h2>{{group.title}} > participantes > {{day.created | date: 'medium'}}</h2>
+  <h2>{{group.title}} > participantes > {{attendance.created | date: 'medium'}}</h2>
   <div class="w-list-group">
     <div class="w-list-group-item"
          data-ng-repeat="participant in participants"

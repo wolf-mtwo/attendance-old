@@ -1,6 +1,6 @@
 'use strict';
-angular.module('mean.groups').controller('AttendanceController', ['$scope', '$stateParams', '$location', 'Global', 'Groups', 'Days', 'Participants',
-  function($scope, $stateParams, $location, Global, Groups, Days, Participants) {
+angular.module('mean.groups').controller('AttendanceController', ['$scope', '$stateParams', '$location', 'Global', 'Groups', 'Attendances', 'Participants',
+  function($scope, $stateParams, $location, Global, Groups, Attendances, Participants) {
     $scope.global = Global;
 
     $scope.init = function() {
@@ -18,11 +18,11 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
     };
 
     $scope.createDay = function() {
-      var value = new Days({
+      var value = new Attendances({
         groupId: $stateParams.groupId
       });
       value.$save(function(response) {
-        $scope.day = response;
+        $scope.attendance = response;
       });
     };
 

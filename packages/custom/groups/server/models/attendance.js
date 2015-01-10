@@ -23,4 +23,4 @@ Schema.statics.load = function(id, cb) {
     }).populate('group', 'title').exec(cb);
 };
 
-mongoose.model('Day', Schema);
+mongoose.model('Attendance', Schema);

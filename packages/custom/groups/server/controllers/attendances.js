@@ -4,15 +4,15 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  CurrentModel = mongoose.model('Day'),
+  CurrentModel = mongoose.model('Attendance'),
   Group = mongoose.model('Group'),
   _ = require('lodash');
 
-exports.day = function(req, res, next, id) {
+exports.attendance = function(req, res, next, id) {
   CurrentModel.load(id, function(err, item) {
     if (err) return next(err);
     if (!item) return next(new Error('Failed to load item ' + id));
-    req.day = item;
+    req.attendance = item;
     next();
   });
 };
@@ -43,7 +43,7 @@ exports.create = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  var item = req.day;
+  var item = req.attendance;
   item = _.extend(item, req.body);
 
   item.save(function(err) {
@@ -59,7 +59,7 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-  var item = req.day;
+  var item = req.attendance;
 
   item.remove(function(err) {
     if (err) {
@@ -74,7 +74,7 @@ exports.destroy = function(req, res) {
 };
 
 exports.show = function(req, res) {
-  res.jsonp(req.day);
+  res.jsonp(req.attendance);
 };
 
 exports.all = function(req, res) {
