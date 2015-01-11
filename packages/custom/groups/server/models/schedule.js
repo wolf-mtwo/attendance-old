@@ -11,23 +11,15 @@ var Schema = new Schema({
     type: Date,
     default: Date.now
   },
-  attendance: {
+  group: {
     type: Schema.ObjectId,
-    ref: 'Attendance'
-  },
-  status: {
-    type: String
-  },
-  participant: {
-    type: Schema.ObjectId,
-    ref: 'Participant'
+    ref: 'Group'
   }
 });
 
 Schema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
-  }).populate('Attendance', 'participant').populate('participant', 'nombre email').exec(cb);
+  }).populate('group', 'title').exec(cb);
 };
-
-mongoose.model('Attendance', Schema);
+mongoose.model('Schedule', Schema);
