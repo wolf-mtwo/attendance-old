@@ -4,12 +4,12 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
     $scope.global = Global;
 
     $scope.init = function() {
-      $scope.findGroup();
+      $scope.loadGroup();
       $scope.createSchedule();
       $scope.findParticipants();
     };
 
-    $scope.findGroup = function() {
+    $scope.loadGroup = function() {
       Groups.get({
         groupId: $stateParams.groupId
       }, function(response) {
@@ -19,7 +19,7 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
 
     $scope.createSchedule = function() {
       var value = new Schedules({
-        group: $stateParams.groupId
+        groupId: $stateParams.groupId
       });
       value.$save(function(response) {
         $scope.schedule = response;
@@ -39,8 +39,8 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
     $scope.changeStatus = function(participant, status) {
       if (!participant.attendance) {
         var value = new Attendance({
-          group: $stateParams.groupId,
-          schedule: $scope.schedule._id,
+          groupId: $stateParams.groupId,
+          scheduleId: $scope.schedule._id,
           participant: participant._id,
           status: status
         });
@@ -50,7 +50,10 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
       } else {
         var attendance = participant.attendance;
         attendance.status = status;
-        attendance.$update(function(response) {
+        attendance.$update({
+          groupId: $stateParams.groupId,
+          scheduleId: $scope.schedule._id
+        }, function(response) {
           console.log(response);
         });
       }
@@ -64,7 +67,9 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
     };
 
     $scope.remove = function() {
-      $scope.schedule.$delete(function() {
+      $scope.schedule.$delete({
+        groupId: $stateParams.groupId,
+      }, function() {
         $location.path('groups/' + $stateParams.groupId);
       });
     };

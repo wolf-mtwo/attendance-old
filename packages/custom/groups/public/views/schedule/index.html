@@ -1,0 +1,13 @@
+<div data-ng-controller="SchedulesController" data-ng-init="init()">
+  <h2>Asistencias por fecha</h2>
+  <div class="list-group">
+    <a data-ng-href="#!/groups/{{group._id}}/schedule/{{schedule._id}}"
+       class="list-group-item"
+       data-ng-repeat="schedule in schedules">
+       {{schedule.created | date:'medium'}}
+    </a>
+  </div>
+  <div class="text-right">
+    <a href="#!/groups/{{group._id}}" class="btn btn-default">Cancelar</a>
+  </div>
+</div>
