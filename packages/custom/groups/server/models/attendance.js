@@ -6,14 +6,18 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var Schema = new Schema({
+var SchemaGeneric = new Schema({
   created: {
     type: Date,
     default: Date.now
   },
-  attendance: {
+  schedule: {
     type: Schema.ObjectId,
-    ref: 'Attendance'
+    ref: 'Schedule'
+  },
+  group: {
+    type: Schema.ObjectId,
+    ref: 'Group'
   },
   status: {
     type: String
@@ -24,10 +28,10 @@ var Schema = new Schema({
   }
 });
 
-Schema.statics.load = function(id, cb) {
+SchemaGeneric.statics.load = function(id, cb) {
   this.findOne({
     _id: id
-  }).populate('Attendance', 'participant').populate('participant', 'nombre email').exec(cb);
+  }).populate('schedule', 'participant').populate('participant', 'nombre email').exec(cb);
 };
 
-mongoose.model('Attendance', Schema);
+mongoose.model('Attendance', SchemaGeneric);

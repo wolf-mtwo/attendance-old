@@ -3,7 +3,7 @@
   <div class="w-list-group">
     <div class="w-list-group-item"
          data-ng-repeat="participant in participants"
-         ng-class="{2:'attended', 1:'permission', null:'fail'}[participant.status]">
+         ng-if="!participant.attendance">
 
     <a href="#!/groups/create">
       {{participant.name}}
@@ -11,7 +11,7 @@
     </a>
       <div style="float: right;margin-top:-7px;">
 
-        <i class="glyphicon glyphicon-ok"></i>
+        <i ng-if ="participant.attendance" class="glyphicon glyphicon-ok"></i>
 
         <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
           <i class="glyphicon glyphicon-thumbs-up"></i>
@@ -24,5 +24,40 @@
         </a>
       </div>
     </div>
+
+    <div class="w-list-group-item"
+         data-ng-repeat="participant in participants"
+         ng-if="participant.attendance"
+         ng-class="{2:'attended', 1:'permission', null:'fail'}[verify(participant)]">
+
+      <a href="#!/groups/create">
+        {{participant.name}}
+        {{participant.status}}
+      </a>
+      <div style="float: right;margin-top:-7px;">
+
+        <i ng-if ="participant.attendance" class="glyphicon glyphicon-ok"></i>
+
+        <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        </a>
+        <a class="btn btn-warning" data-ng-click="changeStatus(participant, 1)">
+          <i class="glyphicon glyphicon-hand-right"></i>
+        </a>
+        <a class="btn btn-danger" data-ng-click="changeStatus(participant, null)">
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p>
+        <div>
+          <a href="#!/groups/{{group.id}}/schedules" class="btn btn-primary">Acceptar</a>
+          <a ng-click="remove()" class="btn btn-default">Cancelar</a>
+        </div>
+      </p>
+    </div>
+
   </div>
 </div>

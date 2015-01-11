@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
   CurrentModel = mongoose.model('Attendance'),
+  Schedule = mongoose.model('Schedule'),
   Group = mongoose.model('Group'),
   _ = require('lodash');
 
@@ -13,6 +14,15 @@ exports.attendance = function(req, res, next, id) {
     if (err) return next(err);
     if (!item) return next(new Error('Failed to load item ' + id));
     req.attendance = item;
+    next();
+  });
+};
+
+exports.schedule = function(req, res, next, id) {
+  Schedule.load(id, function(err, item) {
+    if (err) return next(err);
+    if (!item) return next(new Error('Failed to load item ' + id));
+    req.schedule = item;
     next();
   });
 };
@@ -29,6 +39,7 @@ exports.group = function(req, res, next, id) {
 exports.create = function(req, res) {
   var value = new CurrentModel(req.body);
   value.group = req.group;
+  value.schedule = req.schedule;
 
   value.save(function(err) {
     if (err) {
@@ -78,7 +89,7 @@ exports.show = function(req, res) {
 };
 
 exports.all = function(req, res) {
-  CurrentModel.find({ group: req.group }).exec(function(err, items) {
+  CurrentModel.find({ group: req.group, schedule: req.schedule }).exec(function(err, items) {
     if (err) {
       res.render('error', {
         status: 500

@@ -5,6 +5,7 @@
 */
 var mongoose = require('mongoose'),
   CurrentModel = mongoose.model('Schedule'),
+  Attendance = mongoose.model('Attendance'),
   Group = mongoose.model('Group'),
   _ = require('lodash');
 
@@ -68,6 +69,7 @@ exports.destroy = function(req, res) {
         object: item
       });
     } else {
+      Attendance.remove({schedule: item}).exec();
       res.jsonp(item);
     }
   });

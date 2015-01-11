@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var Schema = new Schema({
+var SchemaGeneric = new Schema({
   created: {
     type: Date,
     default: Date.now
@@ -17,9 +17,9 @@ var Schema = new Schema({
   }
 });
 
-Schema.statics.load = function(id, cb) {
+SchemaGeneric.statics.load = function(id, cb) {
   this.findOne({
     _id: id
-  }).populate('group', 'title').exec(cb);
+  }).populate('group', 'title user').exec(cb);
 };
-mongoose.model('Schedule', Schema);
+mongoose.model('Schedule', SchemaGeneric);
