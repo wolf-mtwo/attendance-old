@@ -1,25 +1,16 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 var mongoose = require('mongoose'),
-  CurrentModel = mongoose.model('Attendance'),
-  Schedule = mongoose.model('Schedule'),
+  CurrentModel = mongoose.model('Schedule'),
+  Attendance = mongoose.model('Attendance'),
   Group = mongoose.model('Group'),
   _ = require('lodash');
 
-exports.attendance = function(req, res, next, id) {
-  CurrentModel.load(id, function(err, item) {
-    if (err) return next(err);
-    if (!item) return next(new Error('Failed to load item ' + id));
-    req.attendance = item;
-    next();
-  });
-};
-
 exports.schedule = function(req, res, next, id) {
-  Schedule.load(id, function(err, item) {
+  CurrentModel.load(id, function(err, item) {
     if (err) return next(err);
     if (!item) return next(new Error('Failed to load item ' + id));
     req.schedule = item;
@@ -39,7 +30,6 @@ exports.group = function(req, res, next, id) {
 exports.create = function(req, res) {
   var value = new CurrentModel(req.body);
   value.group = req.group;
-  value.schedule = req.schedule;
 
   value.save(function(err) {
     if (err) {
@@ -54,7 +44,7 @@ exports.create = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  var item = req.attendance;
+  var item = req.schedule;
   item = _.extend(item, req.body);
 
   item.save(function(err) {
@@ -70,7 +60,7 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-  var item = req.attendance;
+  var item = req.schedule;
 
   item.remove(function(err) {
     if (err) {
@@ -79,17 +69,18 @@ exports.destroy = function(req, res) {
         object: item
       });
     } else {
+      Attendance.remove({schedule: item}).exec();
       res.jsonp(item);
     }
   });
 };
 
 exports.show = function(req, res) {
-  res.jsonp(req.attendance);
+  res.jsonp(req.schedule);
 };
 
 exports.all = function(req, res) {
-  CurrentModel.find({ group: req.group, schedule: req.schedule }).exec(function(err, items) {
+  CurrentModel.find({ group: req.group }).exec(function(err, items) {
     if (err) {
       res.render('error', {
         status: 500
