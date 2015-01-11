@@ -1,0 +1,29 @@
+<div class="w-attendance-index" data-ng-controller="SchedulesController" data-ng-init="initList()">
+  <h2>Asistencias por day {{schedule.created | date: 'medium'}}</h2>
+  <div class="w-list-group-item"
+       data-ng-repeat="schedule in attendances"
+       ng-class="{2:'attended', 1:'permission', null:'fail'}[schedule.status]">
+
+    <a href="#!/groups/create">
+      {{schedule.participant.name}}
+    </a>
+
+    <div style="float: right;margin-top:-7px;">
+
+      <i ng-if ="participant.attendance" class="glyphicon glyphicon-ok"></i>
+
+      <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
+        <i class="glyphicon glyphicon-thumbs-up"></i>
+      </a>
+      <a class="btn btn-warning" data-ng-click="changeStatus(participant, 1)">
+        <i class="glyphicon glyphicon-hand-right"></i>
+      </a>
+      <a class="btn btn-danger" data-ng-click="changeStatus(participant, null)">
+        <i class="glyphicon glyphicon-thumbs-down"></i>
+      </a>
+    </div>
+  </div>
+  <div class="text-right">
+    <a href="#!/groups/{{group._id}}" class="btn btn-default">Cancelar</a>
+  </div>
+</div>

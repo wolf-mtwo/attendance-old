@@ -89,7 +89,7 @@ exports.show = function(req, res) {
 };
 
 exports.all = function(req, res) {
-  CurrentModel.find({ group: req.group, schedule: req.schedule }).exec(function(err, items) {
+  CurrentModel.find({ group: req.group, schedule: req.schedule }).populate('participant', 'name email').exec(function(err, items) {
     if (err) {
       res.render('error', {
         status: 500
