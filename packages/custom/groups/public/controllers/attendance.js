@@ -66,6 +66,15 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
       return undefined;
     };
 
+    $scope.updateSchedule = function() {
+      $scope.schedule.status = true;
+      $scope.schedule.$update({
+        groupId: $stateParams.groupId,
+      }, function() {
+        $location.path('groups/' + $stateParams.groupId);
+      });
+    };
+
     $scope.remove = function() {
       $scope.schedule.$delete({
         groupId: $stateParams.groupId,

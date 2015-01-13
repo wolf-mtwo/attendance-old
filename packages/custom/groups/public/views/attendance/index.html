@@ -12,10 +12,10 @@
 
         <i ng-if ="participant.attendance" class="glyphicon glyphicon-ok"></i>
 
-        <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
+        <a class="btn btn-success" data-ng-click="changeStatus(participant, 10)">
           <i class="glyphicon glyphicon-thumbs-up"></i>
         </a>
-        <a class="btn btn-warning" data-ng-click="changeStatus(participant, 1)">
+        <a class="btn btn-warning" data-ng-click="changeStatus(participant, 5)">
           <i class="glyphicon glyphicon-hand-right"></i>
         </a>
         <a class="btn btn-danger" data-ng-click="changeStatus(participant, null)">
@@ -27,20 +27,19 @@
     <div class="w-list-group-item"
          data-ng-repeat="participant in participants"
          ng-if="participant.attendance"
-         ng-class="{2:'attended', 1:'permission', null:'fail'}[verify(participant)]">
+         ng-class="{10:'attended', 5:'permission', null:'fail'}[verify(participant)]">
 
       <a href="#!/groups/create">
         {{participant.name}}
-        {{participant.status}}
       </a>
       <div style="float: right;margin-top:-7px;">
 
         <i ng-if ="participant.attendance" class="glyphicon glyphicon-ok"></i>
 
-        <a class="btn btn-success" data-ng-click="changeStatus(participant, 2)">
+        <a class="btn btn-success" data-ng-click="changeStatus(participant, 10)">
           <i class="glyphicon glyphicon-thumbs-up"></i>
         </a>
-        <a class="btn btn-warning" data-ng-click="changeStatus(participant, 1)">
+        <a class="btn btn-warning" data-ng-click="changeStatus(participant, 5)">
           <i class="glyphicon glyphicon-hand-right"></i>
         </a>
         <a class="btn btn-danger" data-ng-click="changeStatus(participant, null)">
@@ -49,13 +48,9 @@
       </div>
     </div>
 
-    <div>
-      <p>
-        <div class="text-right">
-          <a href="#!/groups/{{group.id}}/schedules" class="btn btn-primary">Acceptar</a>
-          <a ng-click="remove()" class="btn btn-default">Cancelar</a>
-        </div>
-      </p>
+    <div class="text-right padding">
+      <a ng-click="updateSchedule()" class="btn btn-primary">Acceptar</a>
+      <a ng-click="remove()" class="btn btn-default">Cancelar</a>
     </div>
 
   </div>
