@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-prod',
+  db: 'mongodb://localhost/wargos-attendance',
   /**
    * Database options that will be passed directly to mongoose.connect
    * Below are some examples.
@@ -27,7 +27,7 @@ module.exports = {
     */
   },
   app: {
-    name: 'MEAN - A Modern Stack - Production'
+    name: 'Attendance'
   },
   facebook: {
     clientID: 'APP_ID',

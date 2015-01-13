@@ -54,6 +54,7 @@ exports.update = function(req, res) {
         object: item
       });
     } else {
+      CurrentModel.remove({ group: req.group, status: false }).exec();
       res.jsonp(item);
     }
   });
@@ -80,7 +81,7 @@ exports.show = function(req, res) {
 };
 
 exports.all = function(req, res) {
-  CurrentModel.find({ group: req.group }).exec(function(err, items) {
+  CurrentModel.find({ group: req.group, status: true }).exec(function(err, items) {
     if (err) {
       res.render('error', {
         status: 500

@@ -11,6 +11,10 @@ var SchemaGeneric = new Schema({
     type: Date,
     default: Date.now
   },
+  status: {
+    type: Boolean,
+    default: false
+  },
   group: {
     type: Schema.ObjectId,
     ref: 'Group'
