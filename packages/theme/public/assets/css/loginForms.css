@@ -3,7 +3,6 @@ html {
 }
 
 body.login, body.register,  body.forgot-password {
-background: url("/theme/assets/img/bg.png");
     height: 100%;
     position: relative;
 }
@@ -48,7 +47,7 @@ background: url("/theme/assets/img/bg.png");
 }
 .form {
     background: #ffffff;
-    box-shadow: 0 1px 3px 1px #003644;
+    box-shadow: 0 1px 3px 1px #000000;
     margin-top: 35px;
     left: 50%;
     position: relative;

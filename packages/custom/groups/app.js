@@ -18,25 +18,25 @@ Groups.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Groups.menus.add({
-    title: 'Groups',
+    title: 'Grupos',
     link: 'groups-index',
     roles: ['authenticated'],
     menu: 'main'
   });
 
-  Groups.menus.add({
-    title: 'Attendace',
-    link: 'generator institucion',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
-
-  Groups.menus.add({
-    title: 'reporte',
-    link: 'index reporte',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
+  // Groups.menus.add({
+  //   title: 'Attendace',
+  //   link: 'generator institucion',
+  //   roles: ['authenticated'],
+  //   menu: 'main'
+  // });
+  //
+  // Groups.menus.add({
+  //   title: 'reporte',
+  //   link: 'index reporte',
+  //   roles: ['authenticated'],
+  //   menu: 'main'
+  // });
 
   Groups.aggregateAsset('css', 'groups.css');
 
