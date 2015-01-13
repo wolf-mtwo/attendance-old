@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-dev',
+  db: 'mongodb://localhost/wargos-attendance-dev',
   debug: true,
 //  aggregate: 'whatever that is not false, because boolean false value turns aggregation off', //false
   aggregate: true,
@@ -9,7 +9,7 @@ module.exports = {
     debug: false
   },
   app: {
-    name: 'MEAN - FullStack JS - Development'
+    name: 'Attendance - Wargos - Development'
   },
   facebook: {
     clientID: 'DEFAULT_APP_ID',
