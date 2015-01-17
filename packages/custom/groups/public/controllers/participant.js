@@ -1,20 +1,77 @@
 'use strict';
 
-angular.module('mean.groups').controller('ParticipantController', ['$scope', '$attrs', '$stateParams', '$location', 'Global', 'Participants',
+angular.module('mean.groups').controller('ParticipantsController', ['$scope', '$state', '$stateParams', 'Global', 'Participants', 'Attendance', 'Schedules', 'Groups',
 
-	function($scope, $attrs, $stateParams, $location, Global, Participants) {
-        $scope.global = Global;
+	function($scope, $state, $stateParams, Global, Participants, Attendance, Schedules, Groups) {
+    $scope.global = Global;
 
-        $scope.create = function() {
-            var value = new Participants({
-                name: this.name,
-                email: this.email,
-                groupId: $stateParams.groupId
-            });
-            value.$save(function(response) {
-							$location.path('groups/' + $stateParams.groupId);
-            });
-        };
+		$scope.init = function() {
+		  $scope.loadParticipant();
+		  $scope.findSchedules();
+			$scope.loadGroup();
+		};
+
+		$scope.loadGroup = function() {
+			Groups.get({
+				groupId: $stateParams.groupId
+			}, function(response) {
+				$scope.group = response;
+			});
+		};
+
+    $scope.create = function() {
+      var value = new Participants({
+        name: this.name,
+        email: this.email,
+        groupId: $stateParams.groupId
+      });
+      value.$save(function(response) {
+				$state.go('groups', {groupId: $stateParams.groupId});
+      });
+    };
+
+	 	//TODO has a copy on attendance controller
+		$scope.loadParticipant = function() {
+			Participants.get({
+				groupId: $stateParams.groupId,
+				participantId: $stateParams.participantId
+			}, function(response) {
+				$scope.participant = response;
+			});
+		};
+
+		$scope.findSchedules = function() {
+			Schedules.query({
+				groupId: $stateParams.groupId
+			}, function(response) {
+				$scope.schedules = response;
+				$scope.findParticipantAttendances();
+			});
+		};
+
+		$scope.findParticipantAttendances = function() {
+			Participants.attendance({
+				groupId: $stateParams.groupId,
+				participantId: $stateParams.participantId
+			}, function(response) {
+				$scope.UpdateView(response);
+			});
+		};
+
+		$scope.UpdateView = function(attendances) {
+			angular.forEach(attendances, function(attendance, key) {
+				$scope.Updateschedule(attendance);
+			});
+			console.log($scope.schedules);
+		};
+
+		$scope.Updateschedule = function(attendance) {
+			angular.forEach($scope.schedules, function(schedule, key) {
+				if (schedule._id === attendance.schedule._id) {
+					schedule.attendance = attendance.status;
+				}
+			});
+		};
 
 		// $scope.estaOk = function(estudiante) {
     //         if (!estudiante || estudiante.institucion !== $scope.institucion._id) return false;

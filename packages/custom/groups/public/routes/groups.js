@@ -29,7 +29,7 @@ angular.module('mean.groups').config(['$stateProvider',
       templateUrl: path + '/views/edit.html'
     });
 
-    $stateProvider.state('groups-detail', {
+    $stateProvider.state('groups', {
       url: '/groups/:groupId',
       templateUrl: path + '/views/view.html'
     });
@@ -49,7 +49,7 @@ angular.module('mean.groups').config(['$stateProvider',
       templateUrl: path + '/views/schedule/list.html'
     });
 
-    $stateProvider.state('groups-detail-participant', {
+    $stateProvider.state('groups-participant-create', {
       url: '/groups/:groupId/participants/create',
       templateUrl: path + '/views/participant/create.html'
     });

@@ -9,7 +9,7 @@
     </a>
   </div>
   <div class="list-group">
-      <a data-ng-href="#!/groups/{{group._id}}"
+      <a ui-sref="participant({participantId: participant._id, groupId: group._id })"
          class="list-group-item"
          data-ng-repeat="participant in participants">
         {{participant.name}}
