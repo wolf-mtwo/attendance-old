@@ -8,7 +8,8 @@ angular.module('mean.groups').config(['$stateProvider',
 
       $stateProvider.state('report', {
         url: url + '/reports',
-        templateUrl: path + '/reports/index.html'
+        templateUrl: path + '/reports/index.html',
+        controller: 'ReportsController'
       });
     }
 ]);

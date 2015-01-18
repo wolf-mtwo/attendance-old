@@ -1,0 +1,55 @@
+<div ng-init="init()">
+  <h2>Reportes</h2>
+</div>
+<div ui-view>
+  <div class="w-attendance-index">
+    <div class="w-list-group">
+      <div class="w-list-group-item"
+           data-ng-repeat="participant in participants"
+           ng-if="!participant.attendance">
+
+        <a ui-sref="participant({participantId: participant._id, groupId: groupId })">
+          {{participant.name}}
+        </a>
+
+        <div style="float: right;margin-top:-7px;">
+          <a class="btn btn-success">
+            {{participant.config.ok}}
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+          </a>
+          <a class="btn btn-warning">
+            {{participant.config.li}}
+            <i class="glyphicon glyphicon-hand-right"></i>
+          </a>
+          <a class="btn btn-danger">
+            {{participant.config.no}}
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="w-list-group-item">
+        <b>Total</b>
+        <div style="float: right;margin-top:-7px;">
+          <a class="btn btn-success">
+            {{state.ok}}
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+          </a>
+          <a class="btn btn-warning">
+            {{state.li}}
+            <i class="glyphicon glyphicon-hand-right"></i>
+          </a>
+          <a class="btn btn-danger">
+            {{state.no}}
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="text-right padding">
+    <a ui-sref="groups({groupId: groupId})" class="btn btn-default">Cancelar</a>
+  </div>
+</div>

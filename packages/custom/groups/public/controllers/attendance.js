@@ -1,7 +1,15 @@
 'use strict';
-angular.module('mean.groups').controller('AttendanceController', ['$scope', '$stateParams', '$location', 'Global', 'Groups', 'Schedules', 'Attendance', 'Participants',
-  function($scope, $stateParams, $location, Global, Groups, Schedules, Attendance, Participants) {
-    $scope.global = Global;
+
+angular.module('mean.groups')
+.controller('AttendanceController', [
+  '$scope',
+  '$stateParams',
+  '$location',
+  'Groups',
+  'Schedules',
+  'Attendance',
+  'Participants',
+  function($scope, $stateParams, $location, Groups, Schedules, Attendance, Participants) {
 
     $scope.init = function() {
       $scope.loadGroup();
