@@ -6,7 +6,6 @@ angular.module('mean.groups').controller('AttendanceController', ['$scope', '$st
     $scope.init = function() {
       $scope.loadGroup();
       $scope.createSchedule();
-
     };
 
     $scope.loadGroup = function() {

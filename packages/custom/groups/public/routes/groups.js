@@ -8,7 +8,6 @@ angular.module('mean.groups').config(['$stateProvider',
     });
 
     var path = 'groups/views';
-
     $stateProvider.state('groups-index', {
       url: '/groups',
       templateUrl: path + '/index.html'
