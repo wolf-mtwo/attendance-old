@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
   CurrentModel = mongoose.model('Participant'),
+  Attendance = mongoose.model('Attendance'),
   Group = mongoose.model('Group'),
   _ = require('lodash');
 
@@ -79,6 +80,18 @@ exports.show = function(req, res) {
 
 exports.all = function(req, res) {
   CurrentModel.find({ group: req.group }).exec(function(err, items) {
+    if (err) {
+      res.render('error', {
+        status: 500
+      });
+    } else {
+      res.jsonp(items);
+    }
+  });
+};
+
+exports.attendance = function(req, res) {
+  Attendance.find({ group: req.group, participant: req.participant }).populate('schedule').exec(function(err, items) {
     if (err) {
       res.render('error', {
         status: 500

@@ -5,7 +5,7 @@
        data-ng-repeat="participant in participants"
        ng-class="{10:'attended', 5:'permission', null:'fail'}[participant.attendance.status]">
 
-    <a href="#!/groups/create">
+    <a ui-sref="participant({participantId: participant._id, groupId: group._id })">
       {{participant.name}}
     </a>
 
