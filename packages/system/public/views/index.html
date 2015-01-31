@@ -5,11 +5,69 @@
       <div class="jumbotron text-center">
         <h1>Attendance</h1>
         <p>La mejor aplicación para asistencia.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Leer mas</a></p>
+        <div class="col-md-12">
+          <div class="w-attendance-index">
+            <div class="w-list-group-item">
+              <a ui-sref="schedule" class="ng-binding">
+                <b>Estubo Ahi!</b>
+              </a>
+              <div style="float: right;margin-top:-7px;">
+                <a class="btn btn-success">
+                  <i class="glyphicon glyphicon-thumbs-up"></i>
+                </a>
+              </div>
+            </div>
+            <div class="w-list-group-item">
+              <a ui-sref="schedule" class="ng-binding">
+                <b>Tiene permiso!</b>
+              </a>
+              <div style="float: right;margin-top:-7px;">
+                <a class="btn btn-warning">
+                  <i class="glyphicon glyphicon-hand-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="w-list-group-item">
+              <a ui-sref="schedule" class="ng-binding">
+                <b>NO esta! NO llego! se perdio!</b>
+              </a>
+              <div style="float: right;margin-top:-7px;">
+                <a class="btn btn-danger">
+                  <i class="glyphicon glyphicon-thumbs-down"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="clear: both;">
+        </div>
+        <br>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Leer mas</a>
       </div>
     </div>
   </div>
+  <div class="col-md-12">
+    <div>
+      Características
+    </div>
+    <div class="col-md-12 row">
 
+      <div ng-controller="CarouselDemoCtrl">
+        <div style="height: 565px">
+          <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+              <img ng-src="{{slide.image}}" style="margin:auto;">
+              <div class="carousel-caption">
+                <h4>Slide {{$index}}</h4>
+                <p>{{slide.text}}</p>
+              </div>
+            </slide>
+          </carousel>
+        </div>
+      </div>
+
+    </div>
+  </div>
   <div class="col-md-12">
     <div class="col-lg-4">
       <h2>Facil de usar</h2>
@@ -27,7 +85,6 @@
       <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
   </div>
-
   <div class="col-md-12">
     <div class="community">
       <div class="welcome-sprite"></div>
