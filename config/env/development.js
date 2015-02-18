@@ -9,7 +9,7 @@ module.exports = {
     debug: false
   },
   app: {
-    name: 'Attendance - Wargos - Development'
+    name: 'Attendance'
   },
   facebook: {
     clientID: 'DEFAULT_APP_ID',
