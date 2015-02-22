@@ -1,15 +1,20 @@
 <section class="w-welcome container-fluid" data-ng-controller="IndexController">
+  <div class="col-md-12" ng-if="global.authenticated">
+    hi como estas todo
 
+  </div>
+
+  </div>
   <div class="col-md-12">
     <div class="col-md-12">
       <div class="jumbotron text-center">
         <h1>Attendance</h1>
-        <p>La mejor aplicación para asistencia.</p>
+        <p>La mejor aplicación para el control asistencia.</p>
         <div class="col-md-12">
           <div class="w-attendance-index">
             <div class="w-list-group-item">
               <a ui-sref="schedule" class="ng-binding">
-                <b>Estubo Ahi!</b>
+                <b>Estuvo Ahí!</b>
               </a>
               <div style="float: right;margin-top:-7px;">
                 <a class="btn btn-success">
@@ -29,7 +34,7 @@
             </div>
             <div class="w-list-group-item">
               <a ui-sref="schedule" class="ng-binding">
-                <b>NO esta! NO llego! se perdio!</b>
+                <b>NO esta! NO llegó! se perdió!</b>
               </a>
               <div style="float: right;margin-top:-7px;">
                 <a class="btn btn-danger">
@@ -41,8 +46,6 @@
         </div>
         <div style="clear: both;">
         </div>
-        <br>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Leer mas</a>
       </div>
     </div>
   </div>
@@ -70,8 +73,8 @@
   </div>
   <div class="col-md-12">
     <div class="col-lg-4">
-      <h2>Facil de usar</h2>
-      <p>Interfaces intuitivas. facil uso, no demora al cargar.</p>
+      <h2>Fácil de usar</h2>
+      <p>Interfaces intuitivas. fácil uso, no demora al cargar.</p>
       <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
     <div class="col-lg-4">
@@ -81,7 +84,7 @@
     </div>
     <div class="col-lg-4">
       <h2>¿Quienes somos?</h2>
-      <p>somos un grupo de estudiantes que tienen ganas de desarrolar software, y lo mas importante que tienen ganas de trabajar</p>
+      <p>Somos un grupo de estudiantes que tienen ganas de desarrollar software, y lo más importante!, ganas de trabajar.</p>
       <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
   </div>
