@@ -62,7 +62,7 @@ angular.module('mean.users')
                 window.location = response.redirect;
               }
             } else {
-              $location.url('/');
+              $location.url('/groups');
             }
           })
           .error(function() {
