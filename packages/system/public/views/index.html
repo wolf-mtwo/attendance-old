@@ -1,11 +1,15 @@
 <section class="w-welcome container-fluid" data-ng-controller="IndexController">
   <div class="col-md-12" ng-if="global.authenticated">
-    hi como estas todo
-
+    <h1>
+      Bienvenido!!!
+    </h1>
+    <p>
+      by <b>Wargos</b>
+    </p>
   </div>
 
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12" ng-if="!global.authenticated">
     <div class="col-md-12">
       <div class="jumbotron text-center">
         <h1>Attendance</h1>
